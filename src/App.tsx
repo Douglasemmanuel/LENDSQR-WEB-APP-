@@ -11,10 +11,9 @@ function App() {
 
   return (
     <>
-    <LoginScreen/>
       <Router>
       <Routes>
-        <Route path='/' element={<LoginScreen />} />
+        <Route path='/login' element={<LoginScreen />} />
         <Route path='/dashboard' element={<Dashboard />}>
           <Route index element={<Home />} />
           <Route path='user-details' element={<UserDetails />} />
