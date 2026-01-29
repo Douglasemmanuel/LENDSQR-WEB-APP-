@@ -135,7 +135,7 @@ https://www.youtube.com/watch?v=YOUR_VIDEO_ID
 🌐 Live Demo
 
 👉 Live App:
-https://your-demo-link.vercel.app
+https://lendsqr-web-fi7oukj33-douglasemmanuels-projects.vercel.app/
 
 ---
 
