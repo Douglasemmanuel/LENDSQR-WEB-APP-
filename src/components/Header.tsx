@@ -2,25 +2,34 @@ import React from 'react'
 import Notification from '../assets/icons/NotificationIcon'
 import ThickArrowDown from '../assets/icons/ThickArrowDownIcon'
 import Search from '../assets/icons/SearchIcon'
-import Logo from '../assets/icons/LogoIcon'
 import UserImage from '../assets/images/user.png';
 import LogoImage from '../assets/images/logo.png'
 import '../css/Home.css';
 const Header:React.FC = () => {
   return (
     <div style={{background:'#FFFFFF'}}>
-      <div style={{display:'flex' , justifyContent:'space-between' , alignItems:'center' , padding:"30px "}}>
+      <div className='flex-container' >
        <div>
-                <img src={LogoImage} alt="Logo"  />
+                <img src={LogoImage} alt="Logo"   className="logo-image" />
             </div>
             {/* Search bar */}
 
-
+          <div
+          className="search-container"
+          >
+            <input
+            placeholder='Search for anything'
+            className='search-input'
+            />
+            <div className="search-button">
+              <Search/>
+  </div>
+          </div>
 
 
             {/* notifications */}
             <div style={{display:'flex' , gap:'2rem' , alignItems:'center' , marginRight:'2rem'}}>
-              <p className='header-text'>
+              <p className='header-text extra-class'>
                 Docs
               </p>
               <Notification size={24} color='#213F7D'/>
@@ -41,11 +50,12 @@ const Header:React.FC = () => {
                   height: '100%',
                   objectFit: 'cover',
                   borderRadius: '50%',
+                  
                 }}
               />
             </div>
 
-               <div style={{display:'flex' , alignItems:"center" , gap :'0.4rem'}}>
+               <div style={{display:'flex' , alignItems:"center" , gap :'0.4rem' , cursor:'pointer'}}>
                 <p className='header-name'>
                 Adedeji
               </p>

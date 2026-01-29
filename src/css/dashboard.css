@@ -1,7 +1,7 @@
 
 .AppGlass {
   display: grid;
-  grid-template-columns: 300px 1fr;
+  grid-template-columns: 300px 2fr;
   /* height: 100vh; */
   box-sizing: border-box;
   overflow-y: auto; 
@@ -28,13 +28,16 @@
 
 @media (max-width: 768px) {
   .App.with-sidebar .AppGlass  {
-    grid-template-columns:  220px 1fr; /* Stack vertically on small screens */
-    grid-template-rows: auto auto;
+    grid-template-columns:   1fr; /* Stack vertically on small screens */
+    grid-template-rows: auto ;
 
   }
+  /* .sidebar {
+    display: none;
+  } */
   .AppGlass {
-    grid-template-columns:  50px 1fr; /* Stack vertically on small screens */
-    grid-template-rows: auto auto;
+    grid-template-columns:   1fr; 
+    grid-template-rows: auto ;
 
   }
 }

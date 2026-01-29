@@ -17,10 +17,17 @@ const userNavigationTitles = [
   { id: 6, title: "App and System" },
 ];
 
+interface UserDetailsProps {
+  name?: string;       
+  IdCode?: string; 
+  amount?: string | number;  
+   accountNumber?: string | number;     
+}
 
-const UserDetailsHead: React.FC = () => {
+const UserDetailsHead: React.FC<UserDetailsProps> = ({name , IdCode , amount ,  accountNumber}) => {
   const navigate = useNavigate();
   const [activeId, setActiveId] = useState<number>(1);
+
 
   return (
     <div>
@@ -52,16 +59,24 @@ const UserDetailsHead: React.FC = () => {
         </div>
       </div>
       <div
+      className="parent-card"
       style={{
         backgroundColor:' #FFFFFF',
         borderRadius:'8px',
-
-      }}>
+        display: 'flex',            
+    flexDirection: 'column',     
+    justifyContent: 'space-between', 
+     position: 'relative',   
+    padding: '1rem',
+      minHeight: '150px'  
+      }}
+      >
+        {/* information1 */}
         <div style={{display:'flex' , flexDirection:'row'  , alignItems:'center' , gap:'1rem' , padding:'1rem'}}>
           <Avatar/>
           <div>
-            <p className='name-text '>Grace Effiom</p>
-            <p className='user-number'>LSQFf587g90</p>
+            <p className='name-text '>{name}</p>
+            <p className='user-number'>{IdCode}</p>
           </div>
           <div className='vertical-divider'></div>
           <div>
@@ -74,11 +89,24 @@ const UserDetailsHead: React.FC = () => {
           </div>
            <div className='vertical-divider'></div>
            <div>
-            <p className='name-text '>₦200,000.00</p>
-            <p className='account-number'>9912345678/Providus Bank</p>
+            <p className='name-text '>₦{amount}</p>
+            <p className='account-number'>{accountNumber} /Providus Bank</p>
           </div>
         </div>
-        <div style={{display:'flex' , flexDirection:'row' , justifyContent:'space-between' , alignItems:'center', paddingRight:'1rem' , paddingLeft:'1rem' }}>
+        <div style={{margin:'1.5rem 0'}}></div>
+        {/* information2 */}
+        <div 
+        style={{
+          display:'flex' , 
+          flexDirection:'row' , 
+          justifyContent:'space-between' ,
+          alignItems:'center', 
+           padding: '0 1rem',
+             position: 'absolute',
+            bottom: -16,
+            left: '0',
+            right: '0',
+           }}>
           {userNavigationTitles.map((item) => (
     <p
       key={item.id}
