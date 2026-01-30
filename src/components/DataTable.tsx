@@ -7,12 +7,13 @@ import ActivateUser from '../assets/icons/ActivateUserIcon';
 import BlackList from '../assets/icons/BlackListIcon';
 import Eyes from '../assets/icons/Eyesicon';
 import { useNavigate } from 'react-router-dom';
-import { getRandomDate, users } from '../hooks/DataHooks'
+import {  users } from '../hooks/DataHooks'
 import ArrowDown from '../assets/icons/ArrowDownIcon'
 import LeftButton from '../assets/icons/LeftButtonIcon';
 import RightButton from '../assets/icons/RightButtonIcon';
+import { BiCalendar } from 'react-icons/bi';
 
-import type { User } from '../hooks/DataHooks'
+
 
 
 const titles = [
@@ -24,24 +25,10 @@ const titles = [
   { label: "STATUS" }
 ];
 
-// const users = [
-//   { id:1, organization: "Acme Corp", username: "douglas_em", email: "emmanueldouglas2121@gmail.com", phone: "09021003802", date: "May 15, 2020 10:00 AM", status: "Inactive" },
-//   { id:2, organization: "Tech Solutions", username: "jane_doe", email: "jane.doe@example.com", phone: "08012345678", date: "Jan 20, 2021 09:30 AM", status: "Active" },
-//   { id:3, organization: "Lendsqr", username: "john_smith", email: "john.smith@example.com", phone: "08123456789", date: "Feb 12, 2021 02:15 PM", status: "Pending" },
-//   { id:4, organization: "Lendsqr", username: "alice_j", email: "alice.johnson@example.com", phone: "07012345678", date: "Mar 10, 2021 11:45 AM", status: "Active" },
-//   { id:5, organization: "Lendsqr", username: "bob_brown", email: "bob.brown@example.com", phone: "09087654321", date: "Apr 05, 2021 01:00 PM", status: "Blacklisted" },
-//   { id:6, organization: "Lendsqr", username: "cathy_w", email: "cathy.williams@example.com", phone: "08098765432", date: "May 22, 2021 03:20 PM", status: "Pending" },
-//   { id:7, organization: "Lendsqr", username: "david_t", email: "david.taylor@example.com", phone: "07098765432", date: "Jun 18, 2021 10:10 AM", status: "Inactive" },
-//   { id:8, organization: "Lendsqr", username: "ella_davis", email: "ella.davis@example.com", phone: "08109876543", date: "Jul 12, 2021 09:50 AM", status: "Active" },
-//   { id:9, organization: "Lendsqr", username: "frank_m", email: "frank.miller@example.com", phone: "09011223344", date: "Aug 07, 2021 04:30 PM", status: "Blacklisted" },
-//   { id:10, organization: "Lendsqr", username: "grace_w", email: "grace.wilson@example.com", phone: "08022334455", date: "Sep 15, 2021 12:15 PM", status: "Pending" }
-// ];
 
-type UserType = typeof users[0];
 
 const DataTable: React.FC = () => {
   
-  // getRandomDate
 
   const [activeModalIndex, setActiveModalIndex] = useState<number | null>(null);
   const modalRef = useRef<HTMLDivElement | null>(null);
@@ -83,56 +70,89 @@ const DataTable: React.FC = () => {
 
   const navigate = useNavigate();
   return (
-    <>
-    <div style={{ backgroundColor: "white", padding: '1rem', paddingRight: '2rem' }}>
+
+<>
+{/* TABLE SCROLL AREA */}
+<div className="table-scroll-wrapper">
+  <div className="table-content">
+    <div style={{ backgroundColor: "white", padding: "1rem", paddingRight: "2rem" }}>
+      
+      {/* TABLE HEADER */}
       <div className="table-header">
-        {/* {titles.map((item, index) => (
+        {titles.map((item, index) => (
           <div key={index} className="table-column">
             <span className="data-title">{item.label}</span>
-           <div style={{cursor:'pointer'}}>
-             <Filter color="#545F7D" size={12}  />
-           </div>
+
+            <div
+              style={{ cursor: index === 0 ? "pointer" : "default" }}
+              onClick={index === 0 ? () => toggleDropdown(index) : undefined}
+            >
+              <Filter color="#545F7D" size={12} />
+            </div>
+
+            {index === activeDropdownIndex && (
+              <div className="filter-dropdown">
+                
+                <p className='dropdown-text-head '>Organization</p>
+                 <div className='dropdown-input-container drop-down-flex'>
+                    <p>Status </p>
+                    <div style={{marginRight:'1rem'}}><ArrowDown/></div>
+                   </div>
+                   <div className='filter-dropdown-space'/>
+                 <p className='dropdown-text-head '>Username</p>
+                  <div className='dropdown-input-container'>
+                     {/* <p>User</p> */}
+                                     <input
+                      type="name"
+                      placeholder="User"
+                      className="dropdown-input"
+                    />
+                  </div>
+                  <div className='filter-dropdown-space'/>
+                  <p className='dropdown-text-head '>Email</p>
+                   <div className='dropdown-input-container'>
+                     {/* <p>Email</p> */}
+                                     <input
+                      type="email"
+                      placeholder="Email"
+                      className="dropdown-input"
+                    />
+                   </div>
+                   <div className='filter-dropdown-space'/>
+                  <p className='dropdown-text-head '>Date</p>
+                    <div className='dropdown-input-container drop-down-flex'>
+                    <p>Date</p>
+                    <div style={{marginRight:'1rem'}}><BiCalendar/></div>
+                   </div>
+                   <div className='filter-dropdown-space'/>
+                  <p className='dropdown-text-head '>Phone Number</p>
+                   <div className='dropdown-input-container'>
+                     {/* <p>Phone Number</p> */}
+                                      <input
+                      type="tel"
+                      placeholder="Phone Number"
+                      className="dropdown-input"
+                    />
+                   </div>
+                   <div className='filter-dropdown-space'/>
+                  <p className='dropdown-text-head '>Status</p>
+                   <div className='dropdown-input-container drop-down-flex'>
+                    <p>Status </p>
+                    <div style={{marginRight:'1rem'}}><ArrowDown/></div>
+                   </div>
+                   <div className='filter-dropdown-space'/>
+                  <div style={{flexDirection:"row" , display:"flex" , alignItems:"center" , gap:'1rem',margin:'2rem 0' }}>
+                    <div className='dropdown-button-box' style={{backgroundColor:"tranparent" , border:'1px solid  #545F7D'}}><p style={{color:'#545F7D'}} >Reset</p></div>
+                    <div className='dropdown-button-box' style={{backgroundColor:"#39CDCC"}}><p style={{color:'#FFFFFF'}}>Filter</p></div>
+                  </div>
+              </div>
+            )}
           </div>
-        ))} */}
-        {titles.map((item, index) => (
-  <div key={index} className="table-column">
-    <span className="data-title">{item.label}</span>
-    
-    <div
-      style={{ cursor: index === 0 ? 'pointer' : 'default' }}
-      // onClick={index === 0 ? () => toggleDropdown(index): undefined} 
-      onClick={index === 0 ? () => { alert("Clicked!"); toggleDropdown(index); } : undefined}
-
-    >
-      <Filter color="#545F7D" size={12} />
-    </div>
-     { index === activeDropdownIndex && (
-        <div
-          style={{
-            position: "absolute",
-            bottom: "100%", // dropdown appears above the column
-            left: 0,
-            marginBottom: "4px", // small gap
-            backgroundColor: "#fff",
-            border: "1px solid #ccc",
-            borderRadius: "4px",
-            padding: "0.5rem",
-            boxShadow: "0 2px 6px rgba(0,0,0,0.15)",
-            zIndex: 1000,
-            minWidth: "120px"
-          }}
-        >
-          <p style={{ margin: 0, padding: "0.25rem 0" }}>Option 1</p>
-          <p style={{ margin: 0, padding: "0.25rem 0" }}>Option 2</p>
-          <p style={{ margin: 0, padding: "0.25rem 0" }}>Option 3</p>
-        </div>
-      )}
-  </div>
-))}
-
+        ))}
       </div>
 
-{users
+      {/* TABLE ROWS */}
+     {users
   .slice((currentPage - 1) * selectedCount, currentPage * selectedCount)
   .map((user, index) => {
     let statusColor = "#545F7D";
@@ -235,74 +255,77 @@ const DataTable: React.FC = () => {
       </div>
     );
   })}
-
     </div>
- 
-     <div>
-      {/* Filter Box and Showing count */}
-      <div style={{ display: 'flex', justifyContent: "space-between", alignItems:'center', marginTop: 4 }}>
-        <div style={{ display:'flex', alignItems:'center', gap:'1rem' }}>
-          <p className='filter-text'>Showing</p>
-          <FilterBox 
-            selectedValue={selectedCount} 
-            onChange={(value) => {
-              setSelectedCount(value);
-              setCurrentPage(1); 
-            }} 
-          />
-          <p className='filter-text'> out of {users.length}</p>
-        </div>
+  </div>
+</div>
 
-        {/* Pagination Buttons */}
-        <div style={{ display:'flex', alignItems:'center', gap:'1.2rem' }}>
-          {/* Left Button */}
-          {currentPage > 1 && (
-            <div style={{ cursor:'pointer' }} onClick={handlePrev}>
-              <LeftButton />
-            </div>
-          )}
 
-          {/* Page Numbers */}
-          <div style={{ display:"flex", flexDirection:'row', gap:'1.2rem' }}>
-            {pageNumbers.map((num) => {
-              if (
-                num === 1 || 
-                num === 2 || 
-                num === totalPages || 
-                num === totalPages - 1 || 
-                Math.abs(num - currentPage) <= 1
-              ) {
-                return (
-                  <p 
-                    key={num} 
-                    className='filter-text-number' 
-                    style={{ fontWeight: num === currentPage ? 600 : 400, cursor: 'pointer' }}
-                    onClick={() => setCurrentPage(num)}
-                  >
-                    {num}
-                  </p>
-                );
-              }
+<div className="table-footer">
+  <div className="footer-left">
+    <p className="filter-text">Showing</p>
+    <FilterBox
+      selectedValue={selectedCount}
+      onChange={(value) => {
+        setSelectedCount(value);
+        setCurrentPage(1);
+      }}
+    />
+    <p className="filter-text">out of {users.length}</p>
+  </div>
 
-              // Ellipsis for skipped numbers
-              if (num === currentPage - 2 || num === currentPage + 2) {
-                return <p key={num}>...</p>;
-              }
 
-              return null; 
-            })}
-          </div>
-
-        
-          {currentPage < totalPages && (
-            <div style={{ cursor:'pointer' }} onClick={handleNext}>
-              <RightButton />
-            </div>
-          )}
-        </div>
-      </div>
+  <div style={{ display: 'flex', alignItems: 'center', gap: '1.2rem' }}>
+  {/* Left Button */}
+  {currentPage > 1 && (
+    <div style={{ cursor: 'pointer' }} onClick={handlePrev}>
+      <LeftButton />
     </div>
-    </>
+  )}
+
+  {/* Page Numbers */}
+  <div style={{ display: 'flex', flexDirection: 'row', gap: '1.2rem' }}>
+    {pageNumbers.map((num) => {
+      if (
+        num === 1 ||
+        num === 2 ||
+        num === totalPages ||
+        num === totalPages - 1 ||
+        Math.abs(num - currentPage) <= 1
+      ) {
+        return (
+          <p
+            key={num}
+            className="filter-text-number"
+            style={{
+              fontWeight: num === currentPage ? 600 : 400,
+              cursor: 'pointer',
+            }}
+            onClick={() => setCurrentPage(num)}
+          >
+            {num}
+          </p>
+        );
+      }
+
+      if (num === currentPage - 2 || num === currentPage + 2) {
+        return <p key={num}>...</p>;
+      }
+
+      return null;
+    })}
+  </div>
+
+  {/* Right Button */}
+  {currentPage < totalPages && (
+    <div style={{ cursor: 'pointer' }} onClick={handleNext}>
+      <RightButton />
+    </div>
+  )}
+</div>
+
+</div>
+
+</>
   );
 };
 

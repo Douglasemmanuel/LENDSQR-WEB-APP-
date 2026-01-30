@@ -24,13 +24,14 @@ import Audit from '../assets/icons/AuditIcon'
 import Logout from '../assets/icons/LogoutIcon'
 import SystemMessages from '../assets/icons/SystemMessagesIcon'
 import { useEffect , useState } from 'react'
-import { FiMenu } from 'react-icons/fi';
+import { useAuth } from '../hooks/Auth_hooks'
+import { useNavigate } from 'react-router-dom'
 
 interface SidebarProps {
   isOpen: boolean;
-  toggleSidebar: () => void;
+ 
 }
-const SideBar:React.FC<SidebarProps> = ({isOpen , toggleSidebar}) => {
+const SideBar:React.FC<SidebarProps> = ({isOpen }) => {
       const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 1024);
       useEffect(() => {
   const handleResize = () => {
@@ -42,27 +43,19 @@ const SideBar:React.FC<SidebarProps> = ({isOpen , toggleSidebar}) => {
 
   return () => window.removeEventListener('resize', handleResize);
 }, []);
+  const { logout } = useAuth();
+  const navigate = useNavigate();
+  const signout =()=>{
+      logout()
+       navigate("/", { replace: true });
+  }
   return (
-    <div className='sidebar'>
+    <div 
+    className={`sidebar ${!isOpen ? 'closed' : 'open'}`}
+    >
      <div 
-     className={`sidebar ${isOpen ? 'open' : 'closed'}`}
-    //  style={{padding:'10px 15px'}}
+    
      >
-      <div 
-        // className="hamburger-right" 
-         className={`hamburger ${isOpen ? 'hamburger-right' : ''}`}
-           onClick={toggleSidebar}>
-        <FiMenu size={24} />
-      </div>
-      {/* {isDesktop || isOpen &&(
-         <div style={{display:'flex ' , flexDirection:'row' , gap:'1rem', alignItems:'center'}}>
-        <Organization color=' #213F7D'/>
-        <p className='text-body'>
-          Switch Organization
-        </p>
-        <ArrowDown color=' #213F7D' />
-      </div>
-      )} */}
         <div style={{display:'flex ' , flexDirection:'row' , gap:'1rem', alignItems:'center' , padding:'10px 15px', cursor:'pointer'}}>
         <Organization color=' #213F7D'/>
         <p className='text-body'>
@@ -76,23 +69,16 @@ const SideBar:React.FC<SidebarProps> = ({isOpen , toggleSidebar}) => {
           Dashboard
         </p>
       </div>
-       {/* {isDesktop || isOpen &&(
-         <div style={{display:'flex ' , flexDirection:'row' , gap:'1rem', alignItems:'center'}}>
-      <Home color=' #213F7D'/>
-      <p className='text-body'>
-          Dashboard
-        </p>
-      </div>
-      )} */}
+
    <SideCustomerInformation data={customersUsers} isDesktop={isDesktop} isOpen={isOpen}/>
      <SideInformation data={customersBusiness} isDesktop={isDesktop} isOpen={isOpen}/>
        <SideInformation data={customersSetting} isDesktop={isDesktop} isOpen={isOpen}/>
      </div>
-        <>
+        <div>
         <div className="divider"></div>
 
         <div style={{padding:'10px 15px'}}>
-      <div style={{display:'flex ' , flexDirection:'row' , gap:'1rem', alignItems:'center'}}> 
+      <div style={{display:'flex ' , flexDirection:'row' , gap:'1rem', alignItems:'center' , cursor:'pointer'}} onClick={signout} > 
         <Logout color=' #213F7D'/> 
         <p className='text-body'> Logout </p> 
         </div>
@@ -100,24 +86,7 @@ const SideBar:React.FC<SidebarProps> = ({isOpen , toggleSidebar}) => {
           <p className='text-body'> v1.2.0 </p> 
         </div>
      </div>
-     </>
-     {/* {!isDesktop || !isOpen &&(
-      <>
-        <div className="divider"></div>
-
-        <div style={{padding:'10px 15px'}}>
-      <div style={{display:'flex ' , flexDirection:'row' , gap:'1rem', alignItems:'center'}}> 
-        <Logout color=' #213F7D'/> 
-        <p className='text-body'> Logout </p> 
-        </div>
-        <div>
-          <p className='text-body'> v1.2.0 </p> 
-        </div>
      </div>
-     </>
-     )} */}
-    
-   
     </div>
   )
 }
@@ -176,11 +145,7 @@ const SideInformation: React.FC<SideInformationProps> =({data , isOpen , isDeskt
             <p className='text-head' style={{ padding:'2px 15px'}}>
          {data.head}
         </p>
-         {/* {(isDesktop || isOpen) && (
-              <p className='text-head'>
-         {data.head}
-        </p>
-            )} */}
+        
        
       {data.items.map((item, index) => {
         const Icon = item.icon;
@@ -203,25 +168,6 @@ const SideInformation: React.FC<SideInformationProps> =({data , isOpen , isDeskt
             
           </div>
         </div>
-          // <div
-          //   key={index}
-          //   style={{
-          //     display: 'flex',
-          //     flexDirection: 'row',
-          //     gap: '1rem',
-          //     alignItems: 'center',
-          //     cursor:'pointer',
-          //   }}
-          // >
-          //    {(isDesktop || isOpen) && (
-          //       <Icon color="#213F7D"   />
-          //   )}
-          
-          //   {(isDesktop || isOpen) && (
-          //     <p className="text-body">{item.label}</p>
-          //   )}
-          //   {/* <p className="text-body">{item.label}</p> */}
-          // </div>
         );
       })}
      </div>
@@ -234,11 +180,6 @@ const SideCustomerInformation: React.FC<SideInformationProps> =({data , isOpen ,
             <p className='text-head' style={{ padding:'2px 15px'}}>
          {data.head}
         </p>
-         {/* {(isDesktop || isOpen) && (
-              <p className='text-head'>
-         {data.head}
-        </p>
-            )} */}
        
       {data.items.map((item, index) => {
         const Icon = item.icon;
@@ -253,7 +194,6 @@ const SideCustomerInformation: React.FC<SideInformationProps> =({data , isOpen ,
           >
               <div
             key={index}
-            className={`side-item ${isDesktop || isOpen ? 'show-text' : ''}`}
             style={{
               display: 'flex',
               flexDirection: 'row',
@@ -270,25 +210,7 @@ const SideCustomerInformation: React.FC<SideInformationProps> =({data , isOpen ,
           </div>
           </div>
         
-          // <div
-          //   key={index}
-          //   style={{
-          //     display: 'flex',
-          //     flexDirection: 'row',
-          //     gap: '1rem',
-          //     alignItems: 'center',
-          //     cursor:'pointer',
-          //   }}
-          // >
-          //    {(isDesktop || isOpen) && (
-          //       <Icon color="#213F7D"   />
-          //   )}
           
-          //   {(isDesktop || isOpen) && (
-          //     <p className="text-body">{item.label}</p>
-          //   )}
-          //   {/* <p className="text-body">{item.label}</p> */}
-          // </div>
         );
       })}
      </div>

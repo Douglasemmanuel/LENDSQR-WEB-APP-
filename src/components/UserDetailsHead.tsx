@@ -37,11 +37,11 @@ const UserDetailsHead: React.FC<UserDetailsProps> = ({name , IdCode , amount ,  
         Back to Users
       </p>
       </div>
-      <div style={{display:'flex' , flexDirection:'row' , justifyContent:'space-between' , alignItems:'center'}}>
+      <div className='userDetails-head-row'>
         <p className='main-text-head '>
           User Details
         </p>
-        <div style={{display:'flex' , flexDirection:'row' , alignItems:'center' , gap:'1rem'}}>
+        <div style={{display:'flex' , flexDirection:'row' , alignItems:'center' , gap:'1rem' , flexWrap:"wrap"}}>
         <div className='header-box'
          style={{
             border: "1px solid #E4033B"
@@ -59,18 +59,7 @@ const UserDetailsHead: React.FC<UserDetailsProps> = ({name , IdCode , amount ,  
         </div>
       </div>
       <div
-      className="parent-card"
-      style={{
-        backgroundColor:' #FFFFFF',
-        borderRadius:'8px',
-        display: 'flex',            
-    flexDirection: 'column',     
-    justifyContent: 'space-between', 
-     position: 'relative',   
-    padding: '1rem',
-      minHeight: '150px'  
-      }}
-      >
+      className="parent-card">
         {/* information1 */}
         <div style={{display:'flex' , flexDirection:'row'  , alignItems:'center' , gap:'1rem' , padding:'1rem'}}>
           <Avatar/>
@@ -106,6 +95,9 @@ const UserDetailsHead: React.FC<UserDetailsProps> = ({name , IdCode , amount ,  
             bottom: -16,
             left: '0',
             right: '0',
+             overflowX: 'auto',
+    whiteSpace: 'nowrap',
+    gap: '1rem',
            }}>
           {userNavigationTitles.map((item) => (
     <p

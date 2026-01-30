@@ -6,6 +6,8 @@ export interface User {
 
 export function useAuth() {
   const [user, setUser] = useState<User | null>(null);
+     const [loading, setLoading] = useState(true);
+   
 
   
   useEffect(() => {
@@ -18,6 +20,7 @@ export function useAuth() {
         localStorage.removeItem("user");
       }
     }
+     setLoading(false);
   }, []);
 
   const login = (email: string): void => {
@@ -31,11 +34,13 @@ export function useAuth() {
     localStorage.removeItem("user");
     setUser(null);
   };
+   const isAuthenticated = !!user;
 
   return {
     user,
     login,
     logout,
-    isAuthenticated: Boolean(user),
+    loading,
+    isAuthenticated,
   };
 }

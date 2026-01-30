@@ -5,13 +5,30 @@ import Search from '../assets/icons/SearchIcon'
 import UserImage from '../assets/images/user.png';
 import LogoImage from '../assets/images/logo.png'
 import '../css/Home.css';
-const Header:React.FC = () => {
+import { useAuth } from '../hooks/Auth_hooks';
+
+import { FiMenu } from 'react-icons/fi';
+interface HeaderProps {
+  toggleSidebar: () => void;
+}
+const Header:React.FC<HeaderProps> = ({toggleSidebar}) => {
+  const {user} = useAuth()
   return (
     <div style={{background:'#FFFFFF'}}>
       <div className='flex-container' >
-       <div>
+        <div style={{display:'flex' , alignItems:"center" , flexDirection:"row" , gap:'0.5rem'}}>
+               <div 
+                className="hamburger" 
+                style={{paddingTop:'2rem'}}
+                   onClick={toggleSidebar}
+                   >
+                <FiMenu size={24} />
+              </div>
+                <div>
                 <img src={LogoImage} alt="Logo"   className="logo-image" />
             </div>
+        </div>
+              <div className='spacer' ></div>
             {/* Search bar */}
 
           <div
@@ -26,13 +43,15 @@ const Header:React.FC = () => {
   </div>
           </div>
 
-
+          
             {/* notifications */}
-            <div style={{display:'flex' , gap:'2rem' , alignItems:'center' , marginRight:'2rem'}}>
+            <div className='header-notification-container'>
               <p className='header-text extra-class'>
                 Docs
               </p>
-              <Notification size={24} color='#213F7D'/>
+              <div className='notification'>
+                <Notification size={24} color='#213F7D'/>
+              </div>
             <div style={{display:'flex' , alignItems:'center' , gap:'0.4rem'}}>
                           <div
               style={{
@@ -57,7 +76,7 @@ const Header:React.FC = () => {
 
                <div style={{display:'flex' , alignItems:"center" , gap :'0.4rem' , cursor:'pointer'}}>
                 <p className='header-name'>
-                Adedeji
+                {user?.email.slice(0,14)}
               </p>
               <ThickArrowDown size={16} color='#213F7D'/>
                </div>

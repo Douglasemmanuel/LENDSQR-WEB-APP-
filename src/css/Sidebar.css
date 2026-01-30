@@ -1,4 +1,4 @@
-/* Sidebar.css */
+
 .text-body {
   font-family: 'Work Sans', sans-serif;
   font-weight: 400;
@@ -30,6 +30,10 @@
   scrollbar-width: thin;
   scrollbar-color: #ccc transparent;
   overflow-y: auto;
+  overflow-x: hidden;
+    scrollbar-width: thin;         
+  scrollbar-color: #ccc transparent;
+    max-height: '100vh';
 }
 
 
@@ -47,39 +51,22 @@
   background: transparent;
 }
 
-.sidebar-title {
-  font-size: 22px;
-  font-weight: bold;
-  margin-bottom: 30px;
-}
 
 
 
-.hamburger-inside {
-  cursor: pointer;
-  color: black;
-  padding: 10px;
-  margin-bottom: 20px;
-  display: flex;
-  justify-content: center;
-  top: 5px;
-  left: 30px;
-  transition: left 0.3s ease;
-}
+
+
 .hamburger {
   display: none;
-   /* justify-content: flex-end;  */
    cursor: pointer;
  
 }
-.hamburger .hamburger-right{
-  justify-content: flex-end; 
-  cursor: pointer;
-}
 
 
 
-/* Only show hamburger on smaller screens */
+
+
+
 @media (max-width: 1024px) {
   .hamburger {
     cursor: pointer;
@@ -92,16 +79,14 @@
 }
 
 
-/* Responsive: collapse sidebar and show hamburger */
+
 @media screen and (max-width: 768px) {
-  .sidebar {
-    width: 20px;
-  }
-
-  /* .sidebar.open {
+    .sidebar.open {
     width: 220px;
-  } */
-
+     visibility: visible;
+  opacity: 1;
+  transform: translateX(0);
+  }
  
  
   .hamburger {
@@ -111,8 +96,14 @@
   padding: 10px;
   margin-bottom: 20px;
   justify-content: flex-end; 
-  /* justify-content: center; */
+
   }
+  .sidebar.closed {
+  visibility: hidden;       
+  opacity: 0;              
+  transform: translateX(-100%); 
+  transition: all 0.3s ease;
+}
 }
 
 
@@ -120,36 +111,14 @@
 
 
 
-@media (max-width: 899px) {
+@media (max-width: 850px) {
   .sidebar {
-    /* width: 100%; */
-    position: absolute;
+    width: 300px;
     z-index: 1000;
     background-color: white;
     transition: all 0.3s ease-in-out;
   }
 
-  .hamburger {
-    display: block;
-    cursor: pointer;
-    padding: 10px;
-    margin: 0;
-    color: black;
-    justify-content: center;
-  }
 
-  .dropdown-icon {
-    display: block;
-  }
-
-  .user-info {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-
-  .label {
-    display: inline; /* or block, depending on your desired look */
-  }
 }
 

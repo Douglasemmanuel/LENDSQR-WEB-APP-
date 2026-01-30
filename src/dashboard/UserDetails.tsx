@@ -21,7 +21,13 @@ const UserDetails: React.FC = () => {
       }
     : null;
   return (
-        <div className='home-container '>
+        <div 
+        className='home-container '
+        style={{
+        maxHeight: '100vh',
+        scrollBehavior: 'smooth',
+        }}
+        >
           <div  style={{ overflowX: 'auto' }}>
         <UserDetailsHead name={user?.name}  IdCode={user?.IdCode} amount={user?.amount}   accountNumber={user?. accountNumber}/>
         <div style={{marginTop:'2rem' , marginBottom:'2rem'}}></div>

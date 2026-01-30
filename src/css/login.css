@@ -1,0 +1,193 @@
+.heading-text {
+    font-family: 'Avenir Next', sans-serif;
+    font-weight: 700;
+    font-size: 40px;
+    letter-spacing: -4%;
+    color: #213F7D;
+}
+
+.body-text {
+    font-family: 'Avenir Next', sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    letter-spacing: 0%;
+    color: #545F7D;
+}
+.input-wrapper {
+   height: 50px;
+  margin: 5rem auto 0; 
+    border: none;
+  outline: none;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 0 10px;
+   display: flex;
+  align-items: center;
+}
+
+.input-wrapper input {
+   flex: 1;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  font-family: 'Avenir Next', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 600;
+  color: #545F7D;
+  
+}
+
+
+.password-container {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 0 10px;
+  height: 50px;
+}
+
+.password-container input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  font-family: 'Avenir Next', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 600;
+}
+.forget-show-text {
+  font-family: 'Avenir Next', sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 100%;
+  letter-spacing: 0.1em; 
+  text-align: right;
+  text-transform: uppercase;
+  color: #39CDCC;
+    cursor: pointer;
+}
+
+.forget-password-text {
+  font-family: 'Avenir Next', sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 100%;
+  letter-spacing: 0.1em; 
+  text-align: left;
+  text-transform: uppercase;
+  color: #39CDCC;
+    cursor: pointer;
+    /* margin:0; */
+}
+
+.login-button-text{
+  font-family: 'Avenir Next', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 100%;
+  letter-spacing: 0.1em; 
+  text-align: center;
+  text-transform: uppercase;
+  color: #FFFFFF;
+}
+
+
+
+
+.input-button {
+  width: 447px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  border-radius: 8px;
+  background-color: #39CDCC; 
+  cursor: pointer;
+  justify-content: center;
+  border: none;
+}
+
+.input-button p {
+  font-family: "Avenir Next", sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 100%;
+  letter-spacing: 0.1em;
+  text-align: center;
+  text-transform: uppercase;
+  color: #FFFFFF;
+}
+
+
+
+.split-screen {
+  display: flex;
+  flex-direction: row;
+   align-items: center;
+  justify-content: center;
+  align-content: center;
+  width: 100vw;
+  height: 100vh;
+}
+.left-side,
+.right-side {
+  flex: 1;                  
+  display: flex;
+  flex-direction: column;    
+  align-items: center;       
+  justify-content: center;   
+  margin: 2rem 2rem;
+}
+
+.left-side {
+  background-color: #FBFBFB;
+  align-items: flex-start;
+
+
+}
+
+.right-side {
+  background-color: white; 
+
+}
+
+.login-image {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  padding: 7rem 0;
+
+}
+
+
+.logo-container {
+  width: 100%;
+ 
+}
+
+
+
+
+@media screen and (max-width: 850px) {
+.left-side{
+   visibility: hidden;
+}
+.right-side {
+  width: 100%;
+  background-color: white; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.split-screen {
+  display: block;
+
+}
+}
+
+
+@media screen and (max-width: 500px) {
+  .right-side{
+    width: 100%;
+    padding: 0 2rem;
+  }
+ 
+}

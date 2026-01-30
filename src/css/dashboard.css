@@ -1,19 +1,17 @@
 
 .AppGlass {
   display: grid;
-  grid-template-columns: 300px 2fr;
-  /* height: 100vh; */
+  grid-template-columns: 300px 1fr;
   box-sizing: border-box;
-  overflow-y: auto; 
+  overflow-y: auto;
   overflow-x: auto;
   background-color: #f9f9f9;
-
 }
 
 
 .main-content {
   overflow-y: auto;
-  /* padding: 20px; */
+
 }
 
 .scrollable-container::-webkit-scrollbar {
@@ -27,17 +25,17 @@
 
 
 @media (max-width: 768px) {
-  .App.with-sidebar .AppGlass  {
-    grid-template-columns:   1fr; /* Stack vertically on small screens */
-    grid-template-rows: auto ;
 
+   .AppGlass{
+     grid-template-columns: 1fr; 
   }
-  /* .sidebar {
-    display: none;
-  } */
-  .AppGlass {
-    grid-template-columns:   1fr; 
-    grid-template-rows: auto ;
-
-  }
+    .AppGlass.navbar-open {
+  grid-template-columns: 150px 1fr;
 }
+  .AppGlass.navbar-closed {
+  grid-template-columns: 0 1fr;
+}
+  }
+ 
+ 
+

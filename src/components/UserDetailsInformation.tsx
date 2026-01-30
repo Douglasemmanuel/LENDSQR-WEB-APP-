@@ -77,15 +77,15 @@ const UserGuarantor4 = [
   { title: "Relationship", value: "Sister" },
 ];
   return (
-    <div >
+    <div  style={{ width: '100%' , overflowX:'auto'}}>
       <div
       className='data-table'
       
       >
         <div style={{padding:"1rem"   }}>
-          <div style={{  borderBottom: "1px solid rgba(33, 63, 125, 0.2)" , paddingTop:'1rem' , paddingBottom:'1rem'}}>
+          <div className='table-divider'>
           <p className='information-head'>Personal Information</p>
-          <div style={{display:"flex" ,  alignItems: "flex-start"  , flexDirection:'row' , padding:'0 2rem' , justifyContent:"space-between" }}>
+          <div className='user-information-container-row'>
            <InfoList data={userInfo1} />
            <InfoList data={userInfo2} />
             <InfoList data={userInfo3} />
@@ -94,9 +94,9 @@ const UserGuarantor4 = [
             <div style={{margin:'0 1rem'}}></div>
           </div>
           </div>
-            <div style={{  borderBottom: "1px solid rgba(33, 63, 125, 0.2)", paddingTop:'1rem' , paddingBottom:'1rem' }}>
+            <div className='table-divider'>
           <p className='information-head'>Education and Employment</p>
-          <div style={{display:"flex" ,  alignItems: "flex-start"  , flexDirection:'row' , justifyContent:"space-between"}}>
+          <div className='user-information-container-row'>
            <InfoList data={userE1} />
             <InfoList data={userE2} />
              <InfoList data={userE3} />
@@ -105,18 +105,18 @@ const UserGuarantor4 = [
           </div>
            
           </div>
-          <div style={{  borderBottom: "1px solid rgba(33, 63, 125, 0.2)", paddingTop:'1rem' , paddingBottom:'1rem' }}>
+          <div className='table-divider'>
           <p className='information-head'>Socials</p>
-          <div style={{display:"flex" ,  alignItems: "flex-start"  , flexDirection:'row'  , justifyContent:"space-between" }}>
+          <div className='flex-row-between'>
            <InfoList data={UserSocial1} />
             <InfoList data={UserSocial2} />
              <InfoList data={UserSocial3} />
               <div style={{margin:'0 1rem'}}></div>
           </div>
           </div>
-            <div style={{  borderBottom: "1px solid rgba(33, 63, 125, 0.2)", paddingTop:'1rem' , paddingBottom:'1rem' }}>
+            <div className='table-divider'>
           <p className='information-head'>Guarantor</p>
-          <div style={{display:"flex" ,  alignItems: "flex-start"  , flexDirection:'row'  , justifyContent:"space-between"}}>
+          <div className='flex-row-between'>
            <InfoList data={UserGuarantor1} />
             <InfoList data={UserGuarantor2} />
              <InfoList data={UserGuarantor3} />
@@ -125,7 +125,7 @@ const UserGuarantor4 = [
           </div>
           </div>
             <div style={{  paddingTop:'1rem' , paddingBottom:'1rem' }}>
-         <div style={{display:"flex" ,  alignItems: "flex-start"  , flexDirection:'row'  , justifyContent:"space-between"}}>
+         <div className='flex-row-between'>
            <InfoList data={UserGuarantor1} />
             <InfoList data={UserGuarantor2} />
              <InfoList data={UserGuarantor3} />

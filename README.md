@@ -1,73 +1,153 @@
-# React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+# 📊 Lendsqr Admin Dashboard
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+A modern, fully responsive **Admin Dashboard** built with **React**, **TypeScript**, and **CSS Grid**.
+Designed for scalability, clean UI, and smooth user experience across desktop and mobile devices.
 
-## React Compiler
+---
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+## 🚀 Features
 
-## Expanding the ESLint configuration
+* 📐 **CSS Grid–based layout**
+* 📱 **Fully responsive design**
+* 📂 **Collapsible sidebar navigation**
+* 🍔 **Mobile-friendly hamburger menu**
+* 🔐 **Protected routes (authentication-ready)**
+* 🧭 **Nested routing with React Router**
+* 🎨 Clean & minimal UI
+* ⚡ Fast and lightweight
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 🛠️ Tech Stack
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+* **React**
+* **TypeScript**
+* **React Router v6**
+* **CSS Grid & Flexbox**
+* **LocalStorage authentication (demo-ready)**
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+---
+
+## 📁 Project Structure
+
+```bash
+src/
+├── components/
+│   ├── Header.tsx
+│   ├── SideBar.tsx
+|  |--- DataTable.tsx
+├── dashboard/
+│   ├── Dashboard.tsx
+│   ├── Home.tsx
+│   ├── UserDetails.tsx
+├── hooks/
+│   └── Auth_hooks.ts
+|  |__ DataHooks.ts
+├── routes/
+│   └── ProtectedRoute.tsx
+├── css/
+│   └── dashboard.css
+├── App.tsx
+└── main.tsx
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 🧱 Dashboard Layout (CSS Grid)
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```txt
++------------------+----------------------+
+|             Header       
+|------------------+----------------------+
+|       Sidebar    |  Main Content        |
++------------------+----------------------+
 ```
+
+* Sidebar collapses on mobile
+* Main content scrolls independently
+* Header stays fixed
+
+---
+
+## 🔐 Authentication Flow
+
+* Login state stored in `localStorage`
+* Protected routes prevent unauthorized access
+* Auto redirect:
+
+  * `/login` → `/dashboard` if authenticated
+  * `/dashboard` → `/login` if not authenticated
+
+---
+
+## 🧪 Getting Started
+
+### 1️⃣ Clone the repository
+
+```bash
+git clone https://github.com/Douglasemmanuel/LENDSQR-WEB-APP-.git
+cd lendsqr
+```
+
+### 2️⃣ Install dependencies
+
+```bash
+npm install
+```
+
+### 3️⃣ Start the development server
+
+```bash
+npm run dev
+```
+
+---
+
+## 📱 Responsive Behavior
+
+* **Desktop**: Sidebar + content layout
+* **Tablet**: Collapsible sidebar
+* **Mobile**: Slide-in sidebar overlay
+
+---
+* **Login Screen**
+<img src="././src/assets/screenshots/login.png" alt="Login Screen" width="400" height="500"/>
+
+* **Dashboard Screen**
+<img src="././src/assets/screenshots/dashboard.png" alt="Dashboard Screen" width="400" height="500"/>
+
+* **UserDetails Screen**
+<img src="././src/assets/screenshots/userdetails.png" alt="UserDetails Screen" width="400" height="500"/>
+
+---
+
+
+🎥 Video Demo
+▶️ Full Dashboard Walkthrough
+
+🔗 Direct Link:
+https://www.youtube.com/watch?v=YOUR_VIDEO_ID
+
+---
+
+🌐 Live Demo
+
+👉 Live App:
+https://your-demo-link.vercel.app
+
+---
+
+## 📄 License
+
+This project is licensed under the **MIT License**.
+
+---
+
+## ⭐ Support
+
+If you like this project, give it a ⭐ on GitHub — it really helps!
+
+---
+
